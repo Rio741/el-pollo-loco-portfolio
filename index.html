@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./img/icons/logo-1.png" />
+    <link rel="stylesheet" href="style.css" />
+    <title>El Pollo Loco</title>
+    <script src="models/drawable-object.class.js"></script>
+    <script src="models/movable-object.class.js"></script>
+    <script src="models/throwable-object.class.js"></script>
+    <script src="models/audioManager.class.js"></script>
+    <script src="models/status-bar.class.js"></script>
+    <script src="models/background-object.class.js"></script>
+    <script src="models/character.class.js"></script>
+    <script src="models/chicken.class.js"></script>
+    <script src="models/baby-chicken.class.js"></script>
+    <script src="models/endboss.class.js"></script>
+    <script src="models/cloud.class.js"></script>
+    <script src="models/coin.class.js"></script>
+    <script src="models/bottle.class.js"></script>
+    <script src="models/world.class.js"></script>
+    <script src="models/keyboard.class.js"></script>
+    <script src="models/level.class.js"></script>
+    <script src="levels/level1.js"></script>
+    <script src="js/game.js"></script>
+  </head>
+  <body>
+    <h1 id="headline">El Pollo Loco</h1>
+
+    <div id="fullscreen">
+      <canvas id="canvas" width="720px" height="480px"></canvas>
+
+      <img
+        id="startScreen"
+        src="img/9_intro_outro_screens/start/startscreen_1.png"
+        alt="START-SCREEN"
+      />
+
+      <img
+        id="game-over-img"
+        src="img/9_intro_outro_screens/game_over/game over.png"
+        alt="LOSE-IMG"
+        style="display: none"
+      />
+
+      <img
+        id="win-img"
+        src="img/9_intro_outro_screens/win/win_2.png"
+        alt="WIN-IMG"
+        style="display: none"
+      />
+
+      <img
+        onclick="startGame()"
+        id="play-btn"
+        src="img/icons/play-btn.png"
+        alt="PLAY-BTN"
+      />
+
+      <img
+        id="fullscreen-btn"
+        class="transform-btn"
+        src="img/icons/fullscreen.png"
+        alt="FULLSCREEN-BTN"
+        onclick="toggleFullScreen()"
+      />
+
+      <img
+        id="sound-btn"
+        class="transform-btn"
+        src="img/icons/sound.png"
+        alt="SOUND-BTN"
+        onclick="soundOff()"
+        style="display: none"
+      />
+      <span id="sound-text" class="hover-text">Sound on</span>
+
+      <img
+        id="mute-btn"
+        class="transform-btn"
+        src="img/icons/mute.png"
+        alt="MUTE-BTN"
+        onclick="soundOn()"
+        style="display: none"
+      />
+      <span id="mute-text" class="hover-text">Sound off</span>
+
+      <img
+        id="info-btn"
+        class="transform-btn"
+        src="img/icons/info.png"
+        alt="INFO-BTN"
+        onclick="openInfo()"
+      />
+      <span id="info-text" class="hover-text">Info</span>
+
+      <img
+        id="legal-notice-btn"
+        class="transform-btn"
+        src="img/icons/notice.png"
+        alt="LEGAL-NOTICE-BTN"
+        onclick="openLegalNotice()"
+      />
+      <span id="legal-notice-text" class="hover-text">Legal Notice</span>
+
+      <img
+        id="privacy-policity-btn"
+        class="transform-btn"
+        src="img/icons/policity.png"
+        alt="PRIVACY-POLITICY-BTN"
+        onclick="openPrivacyPolicity()"
+      />
+      <span id="privacy-policity-text" class="hover-text">Privacy Policy</span>
+
+      <img id="restart-btn" style="display: none;"  onclick="startGame()" src="img/icons/restart-btn.png" alt="RESTART-BTN">
+      <button id="home-btn" style="display: none;" onclick="setupHomeScreen()">HOME</button>
+
+      <div id="info-container" onclick="closePopup()">
+        <div id="info-content" onclick="doNotClose(event)">
+          <h2>How to Play</h2>
+          <ul>
+            <li>
+              Use <span style="color: brown">'ARROW KEYS'</span> to move the
+              character.
+            </li>
+            <li>Press <span style="color: brown">'SPACE'</span> to jump.</li>
+            <li>Collect coins to increase your score.</li>
+            <li>Collect bottles to use as projectiles.</li>
+            <li>
+              Press <span style="color: brown">'D'</span> to throw a bottle at
+              enemies.
+            </li>
+            <li>Survive the enemies, and defeat the endboss.</li>
+          </ul>
+          <button class="close-btn" onclick="closePopup()">Close</button>
+        </div>
+      </div>
+
+      <div id="privacy-policity-container" onclick="closePopup()">
+        <div id="privacy-policity-content" onclick="doNotClose(event)"></div>
+      </div>
+
+      <div id="legal-notice-container" onclick="closePopup()">
+        <div id="legal-notice-content" onclick="doNotClose(event)"></div>
+      </div>
+
+      <div id="orientation-warning">
+        <p>Turn your Device to play !</p>
+        <img src="img/icons/phone.png" alt="TURN-LOGO" />
+      </div>
+
+      <!-- mobile buttons-->
+      <img
+        id="left-btn"
+        style="display: none"
+        src="img/icons/left-btn.png"
+        alt="LEFT-BTN"
+      />
+      <img
+        id="right-btn"
+        style="display: none"
+        src="img/icons/right-btn.png"
+        alt="RIGHT-BTN"
+      />
+      <img
+        id="jump-btn"
+        style="display: none"
+        src="img/icons/jump-btn.png"
+        alt="JUMP-BTN"
+      />
+      <img
+        id="throw-btn"
+        style="display: none"
+        src="img/icons/throw-btn.png"
+        alt="THROW-BTN"
+      />
+    </div>
+  </body>
+</html>
